@@ -15,7 +15,7 @@ public class AdventureProject {
 
 	public static void main(String[] args) throws InterruptedException, LineUnavailableException {
 
-		Console console = new Console(35, 150);
+		Console console = new Console(35, 125);
 
 		Clip theme = AudioSystem.getClip();
 
@@ -87,7 +87,7 @@ public class AdventureProject {
 						System.err.println("Error loading image");
 						e.printStackTrace();
 					}
-					console.drawImage(huntingParty1, 0, 0, 600, 600, null); // party
+					console.drawImage(huntingParty1, 400, 400, 600, 600, null); // party
 
 					console.println(
 							"Quickly after adjusting to the heartless lifestyle, you begin to hunt an endangered rhinoceros species, earning the respect of the other hunters. ");
@@ -108,7 +108,7 @@ public class AdventureProject {
 							System.err.println("Error loading image.");
 							e.printStackTrace();
 						}
-						console.drawImage(tunnelHunting, 0, 0, 400, 400, null);
+						console.drawImage(tunnelHunting, 300, 300, 400, 400, null);
 
 						console.println("So, will you follow the tunnel?(Yes/No)");
 
@@ -125,7 +125,7 @@ public class AdventureProject {
 								e.printStackTrace();
 							}
 
-							console.drawImage(safariTemple, 400, 400, 300, 300, null);
+							console.drawImage(safariTemple, 200, 400, 300, 300, null);
 
 							console.println(
 									"After walking several undergound killometers, you enter a cave and are astonished to find a gold covered temple! Suddenly, animals start crowding around you, and just like in any movie, you are crowned king of the jungle!");
@@ -164,7 +164,7 @@ public class AdventureProject {
 							try {
 								Clip theme4 = AudioSystem.getClip();
 								theme4.open(AudioSystem
-										.getAudioInputStream(new File("Musicfile/Avalanche Rockslide Sounds"))); // open
+										.getAudioInputStream(new File("Musicfile/Avalanche Rockslide Sounds.wav"))); // open
 
 								Thread.sleep(1000);
 								theme4.start();
@@ -188,141 +188,140 @@ public class AdventureProject {
 								BufferedImage gameover = null;
 
 								try {
-									gameover = ImageIO.read(new File("PictureResouces/gameover.gif"));
+									gameover = ImageIO.read(new File("PictureResouces/gameover.png"));
 								} catch (IOException e) {
 									System.err.println("Error loading image");
 									e.printStackTrace();
 								}
-								console.drawImage(gameover, 0, 0, 100, 100, null);
+								console.drawImage(gameover, 300, 300, 100, 100, null);
 
 								break;
 
 							} else {
-								playAgain = false;
+								playAgain = true;
 								console.println(
 										"Sorry, too many bad choices commonly correlates with death. Game Over.");
 
 								BufferedImage gameover = null;
 								try {
-									gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+									gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 								} catch (IOException e) {
 									System.err.println("Error loading image");
 									e.printStackTrace();
 								}
-								console.drawImage(gameover, 0, 0, 100, 100, null);
+								console.drawImage(gameover, 300, 300, 100, 100, null);
 								console.readLine();
 								console.clear();
 								break;
 							}
 
-						} else if (userChoice.equalsIgnoreCase("Safari")) {
+						} 
+					}
 
-							BufferedImage safariChoice = null;
+				} if (userChoice.equalsIgnoreCase("Safari")) {
+
+					BufferedImage safariChoice = null;
+					try {
+						safariChoice = ImageIO.read(new File("adventure pictures/safariChoice.jpg"));
+					} catch (IOException e) {
+						System.err.println("Error loading image");
+						e.printStackTrace();
+					}
+					console.drawImage(safariChoice, 300, 300, 100, 100, null);
+
+					console.println(
+							"You've chosen to go on a world famous safari tour! While exploring the great savannah, you spot a mysterious prescence in the tall grass. Would you like to follow it?(Yes/No");
+
+					if (userChoice.equals("Yes")) {
+						console.println(
+								"As you approach the shape, you realize it is a tribe member! You decide to follow them even further, and you discover a grand village.Do you decide to join or go back to your tour group? (Stay/Go Back)");
+
+						if (userChoice.equals("No")) {
+
+							BufferedImage richesPile = null;
 							try {
-								safariChoice = ImageIO.read(new File("adventure pictures/safariChoice.jpg"));
+								richesPile = ImageIO.read(new File("adventure pictures/richesPile.jpg"));
 							} catch (IOException e) {
 								System.err.println("Error loading image");
 								e.printStackTrace();
 							}
-							console.drawImage(safariChoice, 0, 0, 100, 100, null);
+
+							console.drawImage(richesPile, 300, 300, 100, 100, null);
 
 							console.println(
-									"You've chosen to go on a world famous safari tour! While exploring the great savannah, you spot a mysterious prescence in the tall grass. Would you like to follow it?(Yes/No");
+									"You've spotted a mountain of riches behind a hut! You gather everything in your arms and begin to run as fast as you can back! While running back, you hear a pack of lions behind you. Everything turns black.");
 
-							if (userChoice.equals("Yes")) {
-								console.println(
-										"As you approach the shape, you realize it is a tribe member! You decide to follow them even further, and you discover a grand village.Do you decide to join or go back to your tour group? (Stay/Go Back)");
+							try {
 
-								if (userChoice.equals("No")) {
+								Clip theme10 = AudioSystem.getClip();
+								theme10.open(AudioSystem
+										.getAudioInputStream(new File("Musicfile/finalPantherEffect.wav")));
+								Thread.sleep(1000);
+								theme10.start();
+								Thread.sleep(500);
+								theme10.stop();
+								Thread.sleep(1000);
 
-									BufferedImage richesPile = null;
-									try {
-										richesPile = ImageIO.read(new File("adventure pictures/richesPile.jpg"));
-									} catch (IOException e) {
-										System.err.println("Error loading image");
-										e.printStackTrace();
-									}
-
-									console.drawImage(richesPile, 0, 0, 100, 100, null);
-
-									console.println(
-											"You've spotted a mountain of riches behind a hut! You gather everything in your arms and begin to run as fast as you can back! While running back, you hear a pack of lions behind you. Everything turns black.");
-
-									try {
-
-										Clip theme10 = AudioSystem.getClip();
-										theme10.open(AudioSystem
-												.getAudioInputStream(new File("Musicfile/finalPantherEffect.wav")));
-										Thread.sleep(1000);
-										theme10.start();
-										Thread.sleep(500);
-										theme10.stop();
-										Thread.sleep(1000);
-
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-
-									livesRemaining = livesRemaining - 1;
-
-									if (livesRemaining > 0) {
-										playAgain = true;
-										console.println(
-												"Sorry, you made some bad choices. You can play again, but try to make better choices!");
-										BufferedImage gameover = null;
-
-										try {
-											gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
-										} catch (IOException e) {
-											System.err.println("Error loading image");
-											e.printStackTrace();
-										}
-										console.drawImage(gameover, 400, 0, 100, 100, null);
-										break;
-									} else {
-										playAgain = false;
-										console.println("Sorry,you made some bad choices! Game over!");
-
-										BufferedImage gameover = null;
-										try {
-											gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
-										} catch (IOException e) {
-											System.err.println("Error loading image");
-											e.printStackTrace();
-										}
-										console.drawImage(gameover, 400, 0, 100, 100, null);
-
-										console.readLine();
-										console.clear();
-
-										break;
-									}
-
-								} else if (userChoice.equalsIgnoreCase("Stay")) {
-
-									console.println(
-											"You introduce yourself to everyone, and they welcome you with open arms.After partying all night, you've shown the leaders your potential.");
-									try {
-
-										Clip theme11 = AudioSystem.getClip();
-										theme11.open(AudioSystem.getAudioInputStream(
-												new File("Musicfile/Celebration Sound Effect.wav")));
-										Thread.sleep(1000);
-										theme11.start();
-
-										console.println(
-												"The very next morning you wake up to find that you are part of the super council and have been elected chairman of foregin affairs. Congrats, you have succeeded in life.");
-
-										theme11.stop();
-										Thread.sleep(1000);
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-									console.readLine();
-									console.close();
-								}
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 
+							livesRemaining = livesRemaining - 1;
+
+							if (livesRemaining > 0) {
+								playAgain = true;
+								console.println(
+										"Sorry, you made some bad choices. You can play again, but try to make better choices!");
+								BufferedImage gameover = null;
+
+								try {
+									gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
+								} catch (IOException e) {
+									System.err.println("Error loading image");
+									e.printStackTrace();
+								}
+								console.drawImage(gameover, 400, 0, 100, 100, null);
+								break;
+							} else {
+								playAgain = true;
+								console.println("Sorry,you made some bad choices! Game over!");
+
+								BufferedImage gameover = null;
+								try {
+									gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
+								} catch (IOException e) {
+									System.err.println("Error loading image");
+									e.printStackTrace();
+								}
+								console.drawImage(gameover, 400, 0, 100, 100, null);
+
+								console.readLine();
+								console.clear();
+
+								break;
+							}
+
+						} else if (userChoice.equalsIgnoreCase("Stay")) {
+
+							console.println(
+									"You introduce yourself to everyone, and they welcome you with open arms.After partying all night, you've shown the leaders your potential.");
+							try {
+
+								Clip theme11 = AudioSystem.getClip();
+								theme11.open(AudioSystem.getAudioInputStream(
+										new File("Musicfile/Celebration Sound Effect.wav")));
+								Thread.sleep(1000);
+								theme11.start();
+
+								console.println(
+										"The very next morning you wake up to find that you are part of the super council and have been elected chairman of foregin affairs. Congrats, you have succeeded in life.");
+
+								theme11.stop();
+								Thread.sleep(1000);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							console.readLine();
 						}
 					}
 
@@ -338,7 +337,7 @@ public class AdventureProject {
 					e.printStackTrace();
 				}
 
-				console.drawImage(southAmerica, 0, 0, 300, 300, null);
+				console.drawImage(southAmerica, 300, 300, 300, 300, null);
 
 				BufferedImage southCruise = null;
 				try {
@@ -347,7 +346,7 @@ public class AdventureProject {
 					System.err.println("Error loading image");
 					e.printStackTrace();
 				}
-				console.drawImage(southCruise, 0, 0, 300, 300, null);
+				console.drawImage(southCruise, 300, 300, 300, 300, null);
 
 				console.println(
 						"You remember that you have family in South America and you choose to take an all-inclusive 5 star cruise ship.");
@@ -457,7 +456,7 @@ public class AdventureProject {
 									"Sorry, you made some bad choices. You can play again, but try to make better choices!");
 							BufferedImage gameover = null;
 							try {
-								gameover = ImageIO.read(new File("gameover.gif"));
+								gameover = ImageIO.read(new File("gameover.png"));
 							} catch (IOException e) {
 								System.err.println("Error loading image");
 								e.printStackTrace();
@@ -466,15 +465,15 @@ public class AdventureProject {
 							break;
 						} else {
 							// ends game
-							playAgain = false;
+							playAgain = true;
 							BufferedImage gameover = null;
 							try {
-								gameover = ImageIO.read(new File("gameover.gif"));
+								gameover = ImageIO.read(new File("gameover.png"));
 							} catch (IOException e) {
 								System.err.println("Error loading image");
 								e.printStackTrace();
 							}
-							console.drawImage(gameover, 400, 0, 100, 100, null);
+							console.drawImage(gameover, 400, 400, 100, 100, null);
 							console.println(
 									"Sorry, sometimes bad choices can lead to only one road, death. Try to make smarter choices next time.");
 							break;
@@ -490,7 +489,7 @@ public class AdventureProject {
 						System.err.println("Error loading image");
 						e.printStackTrace();
 					}
-					console.drawImage(helicopter, 400, 0, 100, 100, null);
+					console.drawImage(helicopter, 400, 400, 100, 100, null);
 
 					console.println(
 							"You decide to take the rescue helicopter rather than risk dying in the wild away from your WiFi.");
@@ -505,25 +504,25 @@ public class AdventureProject {
 								"Sorry, maybe you should've taken a risk and lived a little more. You can play again, but try to make better choices!");
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
 						}
-						console.drawImage(gameover, 400, 0, 100, 100, null);
+						console.drawImage(gameover, 400, 400, 100, 100, null);
 						break;
 
 					} else {
-						playAgain = false;
+						playAgain = true;
 						console.println("Sorry, you made some bad choices. You're dead now.");
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
 						}
-						console.drawImage(gameover, 0, 0, 100, 100, null);
+						console.drawImage(gameover, 400, 400, 100, 100, null);
 						console.readLine();
 						console.clear();
 						break;
@@ -541,7 +540,7 @@ public class AdventureProject {
 					System.err.println("Error loading image");
 					e.printStackTrace();
 				}
-				console.drawImage(australia1, 0, 0, 100, 100, null);
+				console.drawImage(australia1, 400, 400, 100, 100, null);
 
 				BufferedImage australiaWallaby = null;
 				try {
@@ -557,8 +556,8 @@ public class AdventureProject {
 					System.err.println("Error loading image");
 					e.printStackTrace();
 				}
-				console.drawImage(sketchyPhone, 200, 0, 100, 100, null);
-				console.drawImage(australiaWallaby, 0, 0, 100, 100, null);
+				console.drawImage(sketchyPhone, 400, 400, 100, 100, null);
+				console.drawImage(australiaWallaby, 400, 400, 100, 100, null);
 
 				console.println(
 						"You've chosen to visit the wonderful city of Sydney and fulfill your dream of visiting the Blue Mountains National Park and making life-long friendships with both koalas and surfers.");
@@ -607,7 +606,7 @@ public class AdventureProject {
 								"Sometimes choices don't have the consequences we were expecting, if we remember them at all. Think about it when you play again, you have a new chance!");
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
@@ -615,10 +614,10 @@ public class AdventureProject {
 						console.drawImage(gameover, 300, 300, 100, 100, null);
 						break;
 					} else {
-						playAgain = false;
+						playAgain = true;
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
@@ -632,8 +631,10 @@ public class AdventureProject {
 					}
 
 				} else if (userChoice.equals("Go Home")) {
-					console.println(
-							"You've chosen to go home back to your mediocre life, back to your everyday breakfast, back to your bed. It all sounds nice, but are you really taking that chance?");
+					
+					console.clear();
+					
+					console.println("You've chosen to go home back to your mediocre life, back to your everyday breakfast, back to your bed. It all sounds nice, but are you really taking that chance?");
 
 					livesRemaining = livesRemaining - 1;
 
@@ -648,7 +649,7 @@ public class AdventureProject {
 
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
@@ -656,11 +657,11 @@ public class AdventureProject {
 						console.drawImage(gameover, 300, 300, 100, 100, null);
 						break;
 					} else {
-						playAgain = false;
+						playAgain = true;
 						console.println("The End. Game over. Another Dissapointment.");
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
@@ -745,7 +746,6 @@ public class AdventureProject {
 						// the
 						// clip;
 						theme1.start();
-						Thread.sleep(5000);
 						theme.stop();
 						Thread.sleep(1000);
 					} catch (Exception e) {
@@ -772,7 +772,6 @@ public class AdventureProject {
 						console.println(
 								"You begin rocking back and forth, wishing you never took the offer in the first place. Shaking your head, you begin to close your eyes,not realizing you might not be able to open them ever again.");
 
-						Thread.sleep(5000);
 						theme1.stop();
 						Thread.sleep(1000);
 					} catch (Exception e) {
@@ -785,23 +784,23 @@ public class AdventureProject {
 								"Sorry, something strange just happened. Let's just restart and pretend it was all a dream...");
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
 						}
-						console.drawImage(gameover, 300, 300, 300, 300, null);
+						console.drawImage(gameover, 400, 400, 300, 300, null);
 						break;
 					} else {
-						playAgain = false;
+						playAgain = true;
 						BufferedImage gameover = null;
 						try {
-							gameover = ImageIO.read(new File("adventure pictures/gameover.gif"));
+							gameover = ImageIO.read(new File("adventure pictures/gameover.png"));
 						} catch (IOException e) {
 							System.err.println("Error loading image");
 							e.printStackTrace();
 						}
-						console.drawImage(gameover, 300, 300, 300, 300, null);
+						console.drawImage(gameover, 400, 400, 300, 300, null);
 						console.println(
 								"Well, that was a crazy dream. Or maybe it was the consequences of really bad choices. Maybe this is all a really bad dream, and reality is just...");
 						console.println("Doesn't matter, game over. Better luck next time.");
